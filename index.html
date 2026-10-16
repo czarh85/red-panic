@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Panic</title>
+<meta name="description" content="Red Panic, an original game for the Virtual Boy: fire a line straight up and split the spheres, across eight planets toward the sun. A free demo awaits a final hardware check; the closed beta is open by private message on Discord.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Red Panic">
+<meta property="og:description" content="Red Panic, an original game for the Virtual Boy: fire a line straight up and split the spheres, across eight planets toward the sun. A free demo awaits a final hardware check; the closed beta is open by private message on Discord.">
+<meta property="og:url" content="https://czarh85.github.io/red-panic/">
+<meta property="og:image" content="https://czarh85.github.io/red-panic/img/demo_title_x2.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='14'>&#128308;</text></svg>">
+<style>
+  :root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --nuit:#080000; --nuit-2:#120303; --trait:#3d0f0e;
+    --r1:#7a1515; --r2:#c42020; --r3:#ff3b30;
+    --pale:#ffc9c4; --sourd:#a8706d; --eteint:#5e3533;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--nuit)}
+  body{
+    margin:0;font-family:var(--mono);color:var(--pale);font-size:15px;line-height:1.65;
+    padding-block:0 72px;padding-left:16px;padding-right:16px;
+    background:radial-gradient(1200px 520px at 50% -200px,#2c0808 0%,rgba(8,0,0,0) 72%),var(--nuit);
+  }
+  .wrap{max-width:860px;margin:0 auto}
+
+  header{padding-block:28px 30px}
+  .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--r2);margin:0 0 18px}
+  h1{font-size:clamp(30px,7vw,52px);line-height:1.04;margin:0 0 18px;color:var(--r3);
+     font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+  h1.nom{font-size:clamp(26px,5.5vw,40px);margin:26px 0 0}
+  h1.nom span{display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--r2);font-weight:500;margin-top:8px}
+  p.logo{margin:4px 0 18px;max-width:none}
+  p.logo img{width:min(100%,612px);height:auto;image-rendering:pixelated}
+  .accroche{font-size:clamp(17px,2.6vw,20px);color:var(--pale);margin:0 0 10px;max-width:60ch}
+  .accroche b{color:var(--r3);font-weight:600}
+
+  h2{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--r3);
+     font-weight:700;margin:56px 0 4px;padding-bottom:10px;border-bottom:1px solid var(--trait)}
+  .sub{font-size:13px;color:var(--sourd);margin:12px 0 26px;max-width:64ch}
+  p{max-width:64ch}
+
+  figure{margin:0 0 30px}
+  figure img{display:block;width:100%;max-width:100%;height:auto;
+             image-rendering:pixelated;border:1px solid var(--trait);background:#000}
+  figure.teaser{margin:28px 0 0}
+  figcaption{font-size:12.5px;color:var(--sourd);margin-top:9px}
+  figcaption b{color:var(--pale);font-weight:600}
+  figcaption .regle{color:var(--r3);letter-spacing:.14em;margin-left:.6em}
+
+  .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin-bottom:30px}
+  .duo figure{margin:0}
+
+  ul{padding-left:20px;margin:0 0 18px;display:grid;gap:10px;max-width:64ch}
+  li b{color:var(--pale);font-weight:600}
+  ol.pistes{padding-left:0;list-style:none;display:grid;gap:8px;margin:0 0 18px}
+  ol.pistes li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
+  ol.pistes b{min-width:9.5em;color:var(--pale);font-weight:600}
+  ol.pistes span{color:var(--sourd);font-size:13px;min-width:6em}
+  ol.pistes audio{height:30px;max-width:100%}
+
+  .statut{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:18px 0 0}
+  .bouton{display:inline-block;font:600 14px/1 var(--mono);letter-spacing:.06em;padding:12px 18px;
+          border:1px solid var(--r3);background:var(--r2);color:var(--nuit);text-decoration:none}
+  .bouton.off{background:transparent;border:1px dashed var(--eteint);color:var(--sourd);cursor:not-allowed}
+  .petit{font-size:12.5px;color:var(--sourd)}
+
+  .appel{border-left:3px solid var(--r3);background:var(--nuit-2);padding:20px 22px;margin:28px 0}
+  .appel h3{margin:0 0 12px;font-size:16px;color:var(--r3)}
+  .appel p{margin:0 0 12px}
+  .appel p:last-child{margin:0}
+  .appel figure{margin:6px 0 16px}
+
+  .note{font-size:12.5px;color:var(--sourd);border-left:2px solid var(--trait);
+        padding-left:14px;margin:26px 0;max-width:64ch}
+
+  a{color:var(--r3);text-decoration-color:var(--r1);text-underline-offset:3px}
+  a:hover{text-decoration-color:var(--r3)}
+  a:focus-visible{outline:2px solid var(--r3);outline-offset:3px}
+
+  footer{margin-top:62px;padding-top:22px;border-top:1px solid var(--trait);
+         font-size:12px;color:var(--sourd);line-height:1.85}
+  footer p{margin:0 0 10px}
+  footer b{color:var(--pale);font-weight:600}
+
+  /* The shared menu bar: Red Shift's values, one fixed width centred on the screen. */
+  header.bandeau{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+    gap:.5rem 1.5rem;padding:1.25rem 0;border-bottom:1px solid #3a0a0a;
+    width:min(calc(75rem - 32px),calc(100vw - 32px));position:relative;left:50%;
+    transform:translateX(-50%);
+    font:1rem/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:#f2d6d6}
+  .bandeau a{color:#ff2a2a;text-decoration-color:currentColor;text-underline-offset:auto}
+  .bandeau a:focus-visible{outline:2px solid #ff2a2a;outline-offset:2px}
+  .bandeau .marque{margin:0;max-width:none;font-weight:700;letter-spacing:.12em}
+  .bandeau .marque a{text-decoration:none}
+  .bandeau .marque span{color:#a86060;font-weight:400;letter-spacing:0;margin-left:.4rem}
+  .bandeau nav a,.bandeau nav .off{margin-right:1rem}
+  .bandeau nav :last-child{margin-right:0}
+  .bandeau nav a[aria-current]{color:#f2d6d6;text-decoration:none}
+  .bandeau nav .off{color:#6a4040;cursor:not-allowed}
+  .bandeau nav .off small{font-size:.8em;color:#8a5a5a}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="bandeau">
+<p class="marque"><a href="index.html">RED PANIC</a> <span>demo &middot; closed beta</span></p>
+<nav><a href="news.html">News</a> <a href="index.html" aria-current="page">Game</a> <a href="how.html">How it&#39;s made</a> <a href="beta.html">Beta kit</a> <span class="off" aria-disabled="true">Forum <small>(no forum thread yet)</small></span></nav>
+</header>
+<h1 class="nom">Red Panic <span>an original game for the Virtual Boy</span></h1>
+<figure class="teaser"><img src="img/trailer.gif" width="768" height="448" alt="The Red Panic teaser: VERDANT, the seven other worlds, the three planes of depth, the plans, two players, FEVER, the title, then the demo and the closed beta"></figure>
+<header>
+<p class="logo"><img src="img/logo.png" width="306" height="46" alt="RED PANIC"></p>
+<p class="accroche">Fire a line straight up: every sphere it touches splits in two, smaller each time, until none is left.</p>
+<p>A journey across eight planets toward the sun: five places on each, then a weightless crossing through space to the next.</p>
+<p>Alone, or two players in CO-OP, by link cable or with a CPU partner.</p>
+</header>
+
+<h2 id="demo">The demo</h2>
+<p>The demo is built, and free: VERDANT, the first planet and its five places, then COMETS, the crossing that follows. Solo or CO-OP, with FEVER for both.</p>
+<div class="statut"><span class="bouton off" role="link" aria-disabled="true">Download the demo</span> <span class="petit">Not open yet: the demo must first pass a final check on a real Virtual Boy. No date announced.</span></div>
+<p>To join the closed beta, send a private message on Discord to <b>@henzelince</b>.</p>
+<div class="duo">
+<figure><a href="img/demo_coop_x4.png"><img src="img/demo_coop_x2.png" width="768" height="448" alt="The CO-OP lobby with the CPU partner" loading="lazy"></a>
+<figcaption><b>CO-OP with the CPU.</b> Two pilots, one score.</figcaption></figure>
+<figure><a href="img/demo_fever_x4.png"><img src="img/demo_fever_x2.png" width="768" height="448" alt="The FEVER board on VERDANT" loading="lazy"></a>
+<figcaption><b>FEVER.</b> Short challenges; each one starts when you press A. In the demo: VERDANT and COMETS.</figcaption></figure>
+</div>
+
+<h2 id="worlds">Eight worlds</h2>
+<p class="sub">Each planet's fifth and richest place, in play. Emulator captures, left eye only; click to enlarge.</p>
+<div class="duo">
+<figure><a href="img/verdant_x4.png"><img src="img/verdant_x2.png" width="768" height="448" alt="VERDANT, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>VERDANT</b></figcaption></figure>
+<figure><a href="img/glacia_x4.png"><img src="img/glacia_x2.png" width="768" height="448" alt="GLACIA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>GLACIA</b><span class="regle">ICE</span></figcaption></figure>
+</div>
+<div class="duo">
+<figure><a href="img/abyssa_x4.png"><img src="img/abyssa_x2.png" width="768" height="448" alt="ABYSSA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>ABYSSA</b><span class="regle">WATER</span></figcaption></figure>
+<figure><a href="img/aeria_x4.png"><img src="img/aeria_x2.png" width="768" height="448" alt="AERIA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>AERIA</b><span class="regle">WIND</span></figcaption></figure>
+</div>
+<div class="duo">
+<figure><a href="img/prisma_x4.png"><img src="img/prisma_x2.png" width="768" height="448" alt="PRISMA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>PRISMA</b><span class="regle">CRYSTAL</span></figcaption></figure>
+<figure><a href="img/nox_x4.png"><img src="img/nox_x2.png" width="768" height="448" alt="NOX, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>NOX</b></figcaption></figure>
+</div>
+<div class="duo">
+<figure><a href="img/forgia_x4.png"><img src="img/forgia_x2.png" width="768" height="448" alt="FORGIA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>FORGIA</b><span class="regle">BELT</span></figcaption></figure>
+<figure><a href="img/magma_x4.png"><img src="img/magma_x2.png" width="768" height="448" alt="MAGMA, its fifth place, in play" loading="lazy"></a>
+<figcaption><b>MAGMA</b><span class="regle">GEYSERS</span></figcaption></figure>
+</div>
+
+<h2 id="beta">The closed beta</h2>
+<div class="appel">
+<h3>Join the closed beta and design levels with us</h3>
+<p>Every place of the game starts as a plan. The beta kit holds the plan of every place; you can redraw any of them and send it back. Every redraw is read, but none is promised a place in the game.</p>
+<figure><a href="img/plan_verdant_5_x4.png"><img src="img/plan_verdant_5_x2.png" width="768" height="448" alt="The plan of VERDANT 5" loading="lazy"></a>
+<figcaption><b>VERDANT 5, its plan:</b> the routes, the ladder, the key and the door, as the level-design reference draws them.</figcaption></figure>
+<p>To join, send a private message on Discord to <b>@henzelince</b>. <a href="beta.html#level-design">What the beta kit holds</a>.</p>
+</div>
+
+<h2 id="depth">The 3D</h2>
+<p>Places reach back into the screen, up to three planes deep. Pads launch you from one plane to another, and from a pad you can fire your line into the next plane.</p>
+<p>Whatever stands in front of your plane turns see-through, so your pilot stays in view.</p>
+
+<h2 id="soundtrack">The soundtrack</h2>
+<p class="sub">Eleven pieces, 45-second extracts recorded from the game's jukebox.</p>
+<ol class="pistes">
+<li><b>TITLE THEME A</b><span>the title</span><audio controls preload="none" src="audio/01-solar-wind.mp3"></audio></li>
+<li><b>ORRERY</b><span>the map</span><audio controls preload="none" src="audio/02-orrery.mp3"></audio></li>
+<li><b>DRIFT</b><span>the crossings</span><audio controls preload="none" src="audio/03-drift.mp3"></audio></li>
+<li><b>GARDEN</b><span>VERDANT</span><audio controls preload="none" src="audio/04-garden.mp3"></audio></li>
+<li><b>AURORA</b><span>GLACIA</span><audio controls preload="none" src="audio/05-aurora.mp3"></audio></li>
+<li><b>UNDERTOW</b><span>ABYSSA</span><audio controls preload="none" src="audio/06-undertow.mp3"></audio></li>
+<li><b>SKYWARD</b><span>AERIA</span><audio controls preload="none" src="audio/07-skyward.mp3"></audio></li>
+<li><b>SPECTRUM</b><span>PRISMA</span><audio controls preload="none" src="audio/08-spectrum.mp3"></audio></li>
+<li><b>NOCTURNE</b><span>NOX</span><audio controls preload="none" src="audio/09-nocturne.mp3"></audio></li>
+<li><b>FOUNDRY</b><span>FORGIA</span><audio controls preload="none" src="audio/10-foundry.mp3"></audio></li>
+<li><b>CALDERA</b><span>MAGMA</span><audio controls preload="none" src="audio/11-caldera.mp3"></audio></li>
+</ol>
+<footer>
+<p>An original game for the Virtual Boy. Made with VUEngine. Unofficial: not made or endorsed by Nintendo. Free, not for sale. If you paid, you were scammed.</p>
+<p>Virtual Boy is a trademark of Nintendo; Red Panic is not affiliated with or endorsed by Nintendo.</p>
+<p>No cookies. No analytics. No third-party scripts.</p>
+<p class="autres"><b>Other Virtual Boy games:</b> <a href="https://czarh85.github.io/virtual-red-shift/">Virtual Red Shift</a>: an unofficial Virtual Boy port of VVVVVV, in private beta. <a href="https://czarh85.github.io/virtual-breakout/">Virtual Breakout</a>: a stereoscopic brick-breaker, free to download.</p>
+</footer>
+</div>
+</body>
+</html>

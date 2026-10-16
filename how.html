@@ -107,11 +107,15 @@
   .bandeau .marque{margin:0;max-width:none;font-weight:700;letter-spacing:.12em}
   .bandeau .marque a{text-decoration:none}
   .bandeau .marque span{color:#a86060;font-weight:400;letter-spacing:0;margin-left:.4rem}
-  .bandeau nav a,.bandeau nav .off{margin-right:1rem}
-  .bandeau nav :last-child{margin-right:0}
+  .bandeau nav{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem 1rem;min-width:0}
+  .bandeau nav>*{white-space:nowrap}
   .bandeau nav a[aria-current]{color:#f2d6d6;text-decoration:none}
   .bandeau nav .off{color:#6a4040;cursor:not-allowed}
   .bandeau nav .off small{font-size:.8em;color:#8a5a5a}
+  /* stage 32, lot 4: the player's other games after the tabs (gabarit.AUTRES), a thin rule before them; on a
+     phone the bar wraps, each name kept whole */
+  .bandeau nav.jeux{padding-left:1rem;border-left:1px solid #3a0a0a}
+  .bandeau nav.jeux a{color:#d84a4a}
 </style>
 </head>
 <body>
@@ -119,6 +123,7 @@
 <header class="bandeau">
 <p class="marque"><a href="index.html">RED PANIC</a> <span>demo &middot; closed beta</span></p>
 <nav><a href="news.html">News</a> <a href="index.html">Game</a> <a href="how.html" aria-current="page">How it&#39;s made</a> <a href="beta.html">Beta kit</a> <span class="off" aria-disabled="true">Forum <small>(no forum thread yet)</small></span></nav>
+<nav class="jeux" aria-label="Other Virtual Boy games"><a href="https://czarh85.github.io/virtual-red-shift/">Virtual Red Shift</a> <a href="https://czarh85.github.io/virtual-breakout/">Virtual Breakout</a></nav>
 </header>
 <header>
 <p class="eyebrow">Red Panic &middot; how it's made</p>
@@ -134,6 +139,15 @@
 
 <h2 id="checks">Tested in an emulator, then on the console</h2>
 <p>Every build is tested in an emulator before it is kept: scripted sessions play it, capture frames, and measure time and memory. The builds that count are flashed to a cartridge and played on a real Virtual Boy; what the console shows decides.</p>
+
+<h2 id="numbers">In numbers</h2>
+<p class="sub">Counted by a script from the git history, the session logs and the game, on 2026-10-16. The session figures are floors: only what the logs show.</p>
+<ul>
+<li><b>The game:</b> 8 planets of 5 places, 7 crossings, 46 music pieces (jingles included); the demo ROM uses 1,502,915 of the cartridge's 2,097,152 bytes (72 %).</li>
+<li><b>The history:</b> 1,646 commits, 860 lots, the plan rewritten 266 times, 67 passing test verdicts.</li>
+<li><b>The sessions:</b> 263 prompts written by a person, 163 hours of active sessions, 100 of them with the loop working alone.</li>
+<li><b>The runs:</b> 1,271 builds, 1,144 emulator sessions, 53 cartridge flashes.</li>
+</ul>
 
 <h2 id="tools">The tools</h2>
 <ul>

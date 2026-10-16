@@ -1,0 +1,66 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>Red Panic -- cahier de level design du b&#234;ta-testeur</title>
+<style>
+body{background:#000;color:#ff2a1c;font:15px/1.45 Consolas,"Courier New",monospace;max-width:1100px;margin:20px auto;padding:0 16px}
+h1,h2{color:#ff2a1c}h2{border-bottom:1px solid #5a0f0a;padding-bottom:4px;margin-top:28px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #5a0f0a;padding:5px 8px;vertical-align:top;text-align:left}
+th{color:#000;background:#9c1d13}td.en{color:#9c1d13}
+a{color:#ff2a1c}
+@media print{body{background:#fff;color:#000}td.en{color:#555}th{background:#ddd;color:#000}h2{border-color:#999}}
+</style>
+<p class="rp-kit" style="margin:0 0 8px;font:12px/1.6 Consolas,'Courier New',monospace;color:#9c1d13"><a href="../index.html" style="color:#ff2a1c">RED PANIC</a> &middot; <a href="index.html" style="color:#ff2a1c">the level-design reference</a> &middot; <a href="../beta.html" style="color:#ff2a1c">the closed beta</a></p><h1>Cahier de level design du b&#234;ta-testeur</h1>
+<p>Ce cahier t'aide &#224; lire les sch&#233;mas des places (<a href="places.html">places.html</a>, &#224; c&#244;t&#233; de ce fichier) et &#224; proposer
+ce qui irait mieux, en redessinant par-dessus. Tout marche hors ligne, depuis le dossier du kit.</p>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>Le jeu doit &#234;tre parfait : si une place t'ennuie, te pi&#232;ge ou te semble injuste, redessine-la.</td>
+<td class="en">The game should be perfect: if a place bores you, traps you or feels unfair, redraw it.</td></tr></table>
+
+<h2>1. Lire un sch&#233;ma</h2>
+<table><tr><th>signe</th><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>trois lignes de sol</td><td>Les trois plans : en bas le plan avant (0), au milieu le plan 1, en haut le plan du fond (2), plus petits avec la profondeur.</td><td class="en">The three planes: front (0) at the bottom, plane 1 in the middle, the back (2) at the top, smaller with depth.</td></tr>
+<tr><td>sol coup&#233;, motif</td><td>Une bande : eau, glace fine, nuage, nappe d'ombre (pointill&#233;s), lave. Le pilote n'y marche pas.</td><td class="en">A band: water, thin ice, cloud, shadow sheet (dotted), lava. The pilot never walks in it.</td></tr>
+<tr><td>bloc sur le sol</td><td>Un muret (la butte du sol de la plan&#232;te) ou un mur de cristal (deux fils &#224; son pied le brisent).</td><td class="en">A low wall (a mound of the planet's floor) or a crystal wall (two lines at its foot break it).</td></tr>
+<tr><td>ovale et signe &#9675; &#9651; &#9633; &#9671;</td><td>Un tremplin : ses deux bouts portent le m&#234;me signe. Une fl&#232;che : sens unique. Cach&#233; : il dort jusqu'au passage d'une bulle. Voyageur : il glisse sur son rail.</td><td class="en">A pad: both ends wear the same sign. An arrow: one way. Hidden: asleep until a sphere passes. Travelling: it slides on its track.</td></tr>
+<tr><td>&#233;chelle, ressort, corniche</td><td>Pour monter sur une corniche ou un muret, ou y sauter.</td><td class="en">To climb onto a ledge or a low wall, or jump there.</td></tr>
+<tr><td>rectangle sur une bande</td><td>Le bac (eau), le nuage porteur (nuage), la grue (lave) : il attend &#224; une rive et porte le pilote.</td><td class="en">The raft (water), the carrier cloud (cloud), the crane (lava): it waits at a bank and carries the pilot.</td></tr>
+<tr><td>cercles</td><td>Les sph&#232;res au d&#233;part, &#224; leur taille.</td><td class="en">The spheres at the start, at their size.</td></tr>
+<tr><td>trac&#233;</td><td>Le chemin : d&#233;part, contournements, retour.</td><td class="en">The route: start, ways around, way back.</td></tr>
+</table>
+<p>L'onglet <b>ELEMENTS</b> de places.html montre chaque &#233;l&#233;ment tel que le jeu le dessine.</p>
+
+<h2>2. La doctrine en mots simples</h2>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>Une question par place, jamais deux fois la m&#234;me dans le voyage.</td><td class="en">One question per place, never the same twice in the journey.</td></tr>
+<tr><td>Chaque obstacle a son contournement, &#233;ventuellement par un autre plan. Sinon il ne fait que r&#233;tr&#233;cir le terrain.</td><td class="en">Every obstacle has a way around, possibly through another plane. Otherwise it only shrinks the field.</td></tr>
+<tr><td>Ce qui a l'air praticable porte le joueur.</td><td class="en">What looks walkable carries the player.</td></tr>
+<tr><td>Chaque m&#233;canique se comprend : un signal, une fen&#234;tre, un indice.</td><td class="en">Every mechanic can be understood: a signal, a window, a hint.</td></tr>
+<tr><td>Jamais d'emmerdification : pas d'attente vide, pas de pi&#232;ge invisible.</td><td class="en">Never make it annoying: no empty waiting, no invisible trap.</td></tr>
+<tr><td>Le bon geste du joueur est r&#233;compens&#233;.</td><td class="en">The player's right move is rewarded.</td></tr>
+</table>
+
+<h2>3. Proposer un changement</h2>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td><b>Le nom de la place</b>, affich&#233; en haut &#224; droite de l'&#233;cran en beta (par exemple VERDANT 3).</td><td class="en"><b>The place's name</b>, shown top right on screen in the beta (e.g. VERDANT 3).</td></tr>
+<tr><td><b>Une phrase</b> : ce qui ne va pas.</td><td class="en"><b>One sentence</b>: what is wrong.</td></tr>
+<tr><td><b>Le dessin</b> de ce qui irait mieux.</td><td class="en"><b>The drawing</b> of what would be better.</td></tr>
+</table>
+
+<h2>4. Redessiner &#224; l'&#233;cran</h2>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>Dans places.html, chaque place a un bouton <b>Redessiner</b>. Un calque transparent s'ouvre sur le sch&#233;ma : crayon, gomme, et les tampons des &#233;l&#233;ments (muret, bande, tremplin, &#233;chelle, ressort, bac, sph&#232;re) pos&#233;s sur le plan choisi (0, 1 ou 2).</td>
+<td class="en">In places.html each place has a <b>Redessiner</b> (redraw) button. A transparent layer opens over the sketch: pen, eraser and the elements' stamps (wall, band, pad, ladder, spring, raft, sphere) laid on the chosen plane (0, 1 or 2).</td></tr>
+<tr><td>&#201;cris ce qui ne va pas et ce qui irait mieux, puis <b>Enregistrer</b> : une image <code>VERDANT_3_proposition.png</code> (le sch&#233;ma, ton dessin, ta phrase).</td>
+<td class="en">Write what is wrong and what would be better, then <b>Enregistrer</b> (save): an image <code>VERDANT_3_proposition.png</code> (the sketch, your drawing, your sentence).</td></tr>
+</table>
+
+<h2>5. Redessiner sur papier</h2>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>Imprime places.html (Ctrl+P) : une place par page, le sch&#233;ma en gris clair sur une grille. Dessine au crayon, prends une photo.</td>
+<td class="en">Print places.html (Ctrl+P): one place per page, the sketch light grey on a grid. Draw in pencil, take a photo.</td></tr>
+</table>
+
+<h2>6. Le retour</h2>
+<table><tr><th>fran&#231;ais</th><th>English</th></tr>
+<tr><td>Envoie l'image (ou la photo), le nom de la place et ta phrase. Chaque proposition retenue devient un changement de la place, avec sa raison &#233;crite.</td>
+<td class="en">Send the image (or the photo), the place's name and your sentence. Each proposal kept becomes a change of the place, its reason written down.</td></tr>
+</table>
+</html>

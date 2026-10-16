@@ -1,7 +1,7 @@
 # Red Panic -- site
 
 This repository holds the web pages of Red Panic, an original game for the Nintendo Virtual Boy, and nothing else:
-no source code, no game assets beyond the pictures and sound extracts the pages show. It holds no ROM: the demo download opens once the demo has passed a final check on a real Virtual Boy.
+no source code, no game assets beyond the pictures and sound extracts the pages show. The one ROM here is the demo, download/red-panic-demo.vb, the build checked on a real Virtual Boy.
 
 The closed beta is by private message (Discord @henzelince), never by download.
 
